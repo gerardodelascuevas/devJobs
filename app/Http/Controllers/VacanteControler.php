@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Vacante;
 use Illuminate\Http\Request;
 
 class VacanteControler extends Controller
@@ -41,9 +43,14 @@ class VacanteControler extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Vacante $vacante, User $user)
     {
-        //
+        //$this->authorize('update', $vacante);
+        dd($vacante->id, $user->id);
+
+        return view('vacantes.edit', [
+            'vacante'=> $vacante,
+        ]);
     }
 
     /**

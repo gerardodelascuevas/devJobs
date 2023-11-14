@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vacante', function (Blueprint $table) {
+        Schema::create('vacantes', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->foreignId('salario_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
