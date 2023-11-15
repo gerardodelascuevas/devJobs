@@ -20,9 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [VacanteControler::class, 'index'])->name('vacantes.dashboard');
-Route::get('/vacantes/create', [VacanteControler::class, 'create'])->name('vacantes.create');
-Route::get('/vacantes/{vacante}/edit', [VacanteControler::class, 'edit'])->name('vacantes.edit');
-//Route::get('/vacantes/create', [VacanteControler::class, 'create'])->name('vacantes.create');
+Route::get('/vacantes/create', [VacanteControler::class, 'create'])->middleware(['auth', ])->name('vacantes.create');
+Route::get('/vacantes/{vacante}/edit', [VacanteControler::class, 'edit'])->middleware(['auth', ])->name('vacantes.edit');
+Route::get('/vacantes/{vacante}', [VacanteControler::class, 'show'])->name('vacantes.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
